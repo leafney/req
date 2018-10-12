@@ -23,8 +23,8 @@ func TestX1(t *testing.T) {
 	t.Log(s)
 }
 
-// get请求 设置请求参数 发现无法为请求添加上参数
-// 通过比对 X2 和 X3的结果，后来发现 请求的req和设置参数的req是不同的req，所以才会赋不上值
+// ~~get请求 设置请求参数 发现无法为请求添加上参数~~
+// ~~通过比对 X2 和 X3的结果，后来发现 请求的req和设置参数的req是不同的req，所以才会赋不上值~~
 // 经过修改，将参数v ...interface{} 在Get() 中传参时是 `v...` 而不是 `v` ，这样就可以了
 func TestX2(t *testing.T) {
 
@@ -58,13 +58,17 @@ func TestX3(t *testing.T) {
 
 }
 
-// 测试req的扩展
+// 测试jsonp
 func TestX4(t *testing.T) {
-	// https://www.baidu.com/s?wd=hello
-	p := Param{
-		"wd":    "hello",
-		"skuid": "J_5338456",
-	}
-	Debug = true
-	XReq("https://www.baidu.com/s", p)
+	url := "https://p.3.cn/prices/mgets?callback=jQuery7955233&type=1&area=1_72_2819_0&pdtk=&pduid=163434863&pdpin=&pin=null&pdbp=0&skuIds=J_7437788%2CJ_32953185394%2CJ_31976609348&ext=11100000&source=item-pc"
+
+	// p := Param{
+	// 	"wd":    "hello",
+	// 	"skuid": "J_5338456",
+	// }
+
+	s, _ := XReq(url, nil)
+	t.Log(s.String())
+
+	// s.ToJSONfromJSONP(v)
 }

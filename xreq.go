@@ -1,7 +1,7 @@
 package req
 
 /*
-req 扩展
+req extension
 */
 
 import (
@@ -18,7 +18,6 @@ import (
 // Custom settings parameters
 type XSets map[string]interface{}
 
-// 请求基类
 func XReq(url string, xSets map[string]interface{}, v ...interface{}) (r *Resp, err error) {
 
 	header := make(http.Header)
@@ -61,16 +60,19 @@ func XReq(url string, xSets map[string]interface{}, v ...interface{}) (r *Resp, 
 		}
 	}
 
+	//Add custom parameters to default parameters
+	v = append(v, header)
+
 	// 根据请求类型，设置请求参数或请求体，发起请求
 	switch method_Type {
 	case "GET":
-		return Get(url, header, v...)
+		return Get(url, v...)
 	case "POST":
-		return Post(url, header, v...)
+		return Post(url, v...)
 	case "PUT":
-		return Put(url, header, v...)
+		return Put(url, v...)
 	case "DELETE":
-		return Delete(url, header, v...)
+		return Delete(url, v...)
 	default:
 		return
 	}
