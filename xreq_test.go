@@ -62,13 +62,19 @@ func TestX3(t *testing.T) {
 func TestX4(t *testing.T) {
 	url := "https://p.3.cn/prices/mgets?callback=jQuery7955233&type=1&area=1_72_2819_0&pdtk=&pduid=163434863&pdpin=&pin=null&pdbp=0&skuIds=J_7437788%2CJ_32953185394%2CJ_31976609348&ext=11100000&source=item-pc"
 
-	// p := Param{
-	// 	"wd":    "hello",
-	// 	"skuid": "J_5338456",
-	// }
+	rs := XSets{
+		"Debug": true,
+	}
 
-	s, _ := XReq(url, nil)
+	s, _ := XReq(url, rs)
 	t.Log(s.String())
 
-	// s.ToJSONfromJSONP(v)
+	var p []jdp
+	s.ToJSONfromJSONP(&p)
+	t.Log(p)
+}
+
+type jdp struct {
+	Id string `id`
+	P  string `json:"p"`
 }

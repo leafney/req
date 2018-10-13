@@ -1,7 +1,7 @@
 package req
 
 /*
-req extension
+req extension by Leafney
 */
 
 import (
