@@ -20,6 +20,9 @@ type XSets map[string]interface{}
 
 func XReq(url string, xSets map[string]interface{}, v ...interface{}) (r *Resp, err error) {
 
+	// default Request Types
+	method_Type := "GET"
+
 	header := make(http.Header)
 
 	// Default configuration
@@ -29,9 +32,6 @@ func XReq(url string, xSets map[string]interface{}, v ...interface{}) (r *Resp, 
 
 	// Set default User-Agent
 	header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36")
-
-	// Request Types
-	method_Type := "GET"
 
 	// Set custom configuration parameters
 	for key, value := range xSets {
