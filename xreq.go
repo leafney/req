@@ -92,12 +92,35 @@ func (r *Resp) ToJSONfromJSONP(v interface{}) error {
 	pat := `^[^(]*?\((.*)\)[^)]*$`
 	reg := regexp.MustCompile(pat)
 	resp := reg.FindStringSubmatch(data)
+	// fmt.Println(resp) 解析不到内容时为 []
 	if len(resp) == 2 {
 		data = resp[1]
+		// Try JSON format parsing
+		return json.Unmarshal([]byte(data), v)
+	} else {
+		return fmt.Errorf("jsonp data parsing failure for: %s", data)
+	}
+}
+
+// JSONfromJSONP convert jsonp response body string to json str
+func (r *Resp) ToJSONStrfromJSONP() (string, error) {
+	data, err := r.ToString()
+	if err != nil {
+		return "", err
 	}
 
-	// Try JSON format parsing
-	return json.Unmarshal([]byte(data), v)
+	// Regular matching like `jQuery7955233 ();` jsonp format
+	pat := `^[^(]*?\((.*)\)[^)]*$`
+	reg := regexp.MustCompile(pat)
+	resp := reg.FindStringSubmatch(data)
+	if len(resp) == 2 {
+		data = resp[1]
+		// Try JSON format parsing
+		return data, nil
+	} else {
+		return "", fmt.Errorf("jsonp data parsing failure for: %s", data)
+	}
+
 }
 
 // *************************

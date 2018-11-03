@@ -61,6 +61,7 @@ func TestX3(t *testing.T) {
 // 测试jsonp
 func TestX4(t *testing.T) {
 	url := "https://p.3.cn/prices/mgets?callback=jQuery7955233&type=1&area=1_72_2819_0&pdtk=&pduid=163434863&pdpin=&pin=null&pdbp=0&skuIds=J_7437788%2CJ_32953185394%2CJ_31976609348&ext=11100000&source=item-pc"
+	// url := "https://p.3.cn/prices/mgets?callback=jQuery7955233&type=1&area=1_72_2819_0&pdtk=&pduid=163434863&pdpin=&pin=null&pdbp=0&skuIds=J_74378&ext=11100000&source=item-pc"
 
 	rs := XSets{
 		"Debug": true,
@@ -69,9 +70,23 @@ func TestX4(t *testing.T) {
 	s, _ := XReq(url, rs)
 	t.Log(s.String())
 
+	// 解析jsonp为对象
 	var p []jdp
-	s.ToJSONfromJSONP(&p)
-	t.Log(p)
+	e := s.ToJSONfromJSONP(&p)
+	if e != nil {
+		t.Error(e)
+	} else {
+		t.Log(p)
+	}
+
+	// 解析jsonp为json字符串
+	// n, err := s.ToJSONStrfromJSONP()
+	// if err != nil {
+	// 	t.Error(err)
+	// } else {
+	// 	t.Log(n)
+	// }
+
 }
 
 type jdp struct {
