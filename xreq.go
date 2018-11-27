@@ -54,7 +54,7 @@ func XReq(url string, xSets map[string]interface{}, v ...interface{}) (r *Resp, 
 			// Request Types
 			method_Type = strings.ToUpper(value.(string))
 		default:
-			fmt.Sprintf("the %s-%s not default settings", key, value)
+			fmt.Printf("the %s-%s not default settings", key, value)
 			// Other parameters are added to the request header by default.
 			header.Set(key, value.(string))
 		}

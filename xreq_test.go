@@ -71,25 +71,64 @@ func TestX4(t *testing.T) {
 	t.Log(s.String())
 
 	// 解析jsonp为对象
-	var p []jdp
-	e := s.ToJSONfromJSONP(&p)
-	if e != nil {
-		t.Error(e)
-	} else {
-		t.Log(p)
-	}
+	// var p []jdp
+	// e := s.ToJSONfromJSONP(&p)
+	// if e != nil {
+	// 	t.Error(e)
+	// } else {
+	// 	t.Log(p)
+	// }
 
 	// 解析jsonp为json字符串
-	// n, err := s.ToJSONStrfromJSONP()
-	// if err != nil {
-	// 	t.Error(err)
-	// } else {
-	// 	t.Log(n)
-	// }
+	n, err := s.ToJSONStrfromJSONP()
+	if err != nil {
+		t.Error(err)
+	} else {
+		t.Log(n)
+	}
 
 }
 
 type jdp struct {
 	Id string `id`
 	P  string `json:"p"`
+}
+
+// 测试代理
+func TestX5(t *testing.T) {
+
+	header := Header{
+		"Referer":         "https://item.jd.com/16814185278.html",
+		"Content-Type":    "application/json;charset=utf-8",
+		"Accept-Encoding": "gzip, deflate, br",
+		"Accept":          "*/*",
+		"User-Agent":      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36",
+	}
+
+	// param := Param{
+	// 	"pdtk":     "",
+	// 	"pduid":    "163434863",
+	// 	"skuIds":   "J_3319362,J_3693867",
+	// 	"callback": "jQuery199463",
+	// 	"area":     "1_72_2819_0",
+	// 	"type":     "1",
+	// 	"source":   "item-pc",
+	// }
+	SetProxyUrl("http://27.203.219.181:8060")
+	Debug = true
+
+	// malformed HTTP response "<html>"
+	//
+	// panic: runtime error: invalid memory address or nil pointer dereference [recovered]
+	// 	panic: runtime error: invalid memory address or nil pointer dereference
+	// [signal SIGSEGV: segmentation violation code=0x1 addr=0x60 pc=0x12a75fc]
+	//
+
+	// https://p.3.cn/prices/mgets
+	r, err := Get("https://www.cnblogs.com/", header)
+	if err != nil {
+		t.Error(err)
+	}
+	t.Log(r.String())
+
 }
