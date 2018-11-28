@@ -98,7 +98,6 @@ type jdp struct {
 func TestX5(t *testing.T) {
 
 	header := Header{
-		"Referer":         "https://item.jd.com/16814185278.html",
 		"Content-Type":    "application/json;charset=utf-8",
 		"Accept-Encoding": "gzip, deflate, br",
 		"Accept":          "*/*",
@@ -114,7 +113,7 @@ func TestX5(t *testing.T) {
 	// 	"type":     "1",
 	// 	"source":   "item-pc",
 	// }
-	SetProxyUrl("http://27.203.219.181:8060")
+	SetProxyUrl("27.203.219.181:8060")
 	Debug = true
 
 	// malformed HTTP response "<html>"
