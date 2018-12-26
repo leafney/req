@@ -28,10 +28,10 @@ func XReq(url string, xSets map[string]interface{}, v ...interface{}) (r *Resp, 
 	// Default configuration
 
 	// Set default Content-Type
-	header.Set("Content-Type", "application/json;charset=utf-8")
+	// header.Set("Content-Type", "application/json;charset=utf-8")
 
 	// Set default User-Agent
-	header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36")
+	// header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36")
 
 	// Set custom configuration parameters
 	for key, value := range xSets {
