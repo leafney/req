@@ -49,12 +49,12 @@ func XReq(url string, xSets map[string]interface{}, v ...interface{}) (r *Resp, 
 		case "referer":
 			header.Set("Referer", value.(string))
 		case "debug":
-			Debug = value.(bool)
+            Debug = value.(bool)
 		case "method":
 			// Request Types
 			method_Type = strings.ToUpper(value.(string))
 		default:
-			fmt.Printf("the %s-%s not default settings", key, value)
+            fmt.Printf("[info] settings [%s:%s] add to headers.\n", key, value)
 			// Other parameters are added to the request header by default.
 			header.Set(key, value.(string))
 		}
