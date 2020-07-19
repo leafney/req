@@ -1,3 +1,3 @@
-module github.com/imroc/req
+module github.com/leafney/req
 
-go 1.12
+go 1.14

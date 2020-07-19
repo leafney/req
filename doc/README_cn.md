@@ -1,5 +1,4 @@
-# req
-[![GoDoc](https://godoc.org/github.com/imroc/req?status.svg)](https://godoc.org/github.com/imroc/req)
+# req (fork from github.com/imroc/req)
 
 Go语言人性化HTTP请求库
 
@@ -20,7 +19,7 @@ Go语言人性化HTTP请求库
 安装
 =======
 ``` sh
-go get github.com/imroc/req
+go get github.com/leafney/req
 ```
 
 概要
