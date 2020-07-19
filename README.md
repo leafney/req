@@ -2,7 +2,7 @@
 
 A golang http request library for humans
 
-fork from [imroc/req](github.com/imroc/req)
+fork from [imroc/req](https://github.com/imroc/req)
 
 Features
 ========

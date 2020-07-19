@@ -2,7 +2,7 @@
 
 Go语言人性化HTTP请求库
 
-fork from [imroc/req](github.com/imroc/req)
+fork from [imroc/req](https://github.com/imroc/req)
 
 特性
 ========
