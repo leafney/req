@@ -1,8 +1,8 @@
-# req (fork from github.com/imroc/req)
+# req
 
 A golang http request library for humans
 
-
+fork from [imroc/req](github.com/imroc/req)
 
 Features
 ========
@@ -80,7 +80,7 @@ param := req.Param{
 	"cmd":  "add",
 }
 // only url is required, others are optional.
-r, err = req.Post("http://foo.bar/api", header, param)
+r, err := req.Post("http://foo.bar/api", header, param)
 if err != nil {
 	log.Fatal(err)
 }
