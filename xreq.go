@@ -21,7 +21,7 @@ type XSets map[string]interface{}
 func XReq(url string, xSets map[string]interface{}, v ...interface{}) (r *Resp, err error) {
 
 	// default Request Types
-	method_Type := "GET"
+	methodType := "GET"
 
 	header := make(http.Header)
 
@@ -52,7 +52,7 @@ func XReq(url string, xSets map[string]interface{}, v ...interface{}) (r *Resp, 
             Debug = value.(bool)
 		case "method":
 			// Request Types
-			method_Type = strings.ToUpper(value.(string))
+			methodType = strings.ToUpper(value.(string))
 		default:
             fmt.Printf("[info] settings [%s:%s] add to headers.\n", key, value)
 			// Other parameters are added to the request header by default.
@@ -64,7 +64,7 @@ func XReq(url string, xSets map[string]interface{}, v ...interface{}) (r *Resp, 
 	v = append(v, header)
 
 	// 根据请求类型，设置请求参数或请求体，发起请求
-	switch method_Type {
+	switch methodType {
 	case "GET":
 		return Get(url, v...)
 	case "POST":
@@ -81,8 +81,8 @@ func XReq(url string, xSets map[string]interface{}, v ...interface{}) (r *Resp, 
 
 // *****Response********************
 
-// ToJSONfromJSONP convert jsonp response body string to json str and then to struct or map
-func (r *Resp) ToJSONfromJSONP(v interface{}) error {
+// ToJSONFromJSONP convert jsonp response body string to json str and then to struct or map
+func (r *Resp) ToJSONFromJSONP(v interface{}) error {
 	data, err := r.ToString()
 	if err != nil {
 		return err
@@ -102,8 +102,8 @@ func (r *Resp) ToJSONfromJSONP(v interface{}) error {
 	}
 }
 
-// JSONfromJSONP convert jsonp response body string to json str
-func (r *Resp) ToJSONStrfromJSONP() (string, error) {
+// JSONFromJSONP convert jsonp response body string to json str
+func (r *Resp) ToJSONStrFromJSONP() (string, error) {
 	data, err := r.ToString()
 	if err != nil {
 		return "", err

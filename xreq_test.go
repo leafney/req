@@ -72,7 +72,7 @@ func TestX4(t *testing.T) {
 
 	// 解析jsonp为对象
 	// var p []jdp
-	// e := s.ToJSONfromJSONP(&p)
+	// e := s.ToJSONFromJSONP(&p)
 	// if e != nil {
 	// 	t.Error(e)
 	// } else {
@@ -80,7 +80,7 @@ func TestX4(t *testing.T) {
 	// }
 
 	// 解析jsonp为json字符串
-	n, err := s.ToJSONStrfromJSONP()
+	n, err := s.ToJSONStrFromJSONP()
 	if err != nil {
 		t.Error(err)
 	} else {

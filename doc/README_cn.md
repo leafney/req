@@ -4,6 +4,32 @@ Go语言人性化HTTP请求库
 
 fork from [imroc/req](https://github.com/imroc/req)
 
+
+新增
+========
+
+### Cookie
+
+support `[]*http.Cookie`
+```go
+var cookList []*http.Cookie
+//....
+req.Get(url, cookList)
+```
+
+### XReq
+```go
+xs := XSets{
+	"Content-Type": "application/javascript",
+    "Debug":  true,
+    "Method": "GET",
+}
+req.XReq(url, xs)
+```
+
+------
+
+
 特性
 ========
 

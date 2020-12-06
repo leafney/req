@@ -4,6 +4,31 @@ A golang http request library for humans
 
 fork from [imroc/req](https://github.com/imroc/req)
 
+Add New
+========
+
+### Cookie
+
+support `[]*http.Cookie`
+```go
+var cookList []*http.Cookie
+//....
+req.Get(url, cookList)
+```
+
+### XReq
+```go
+xs := XSets{
+	"Content-Type": "application/javascript",
+    "Debug":  true,
+    "Method": "GET",
+}
+req.XReq(url, xs)
+```
+
+------
+
+
 Features
 ========
 
