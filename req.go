@@ -232,6 +232,10 @@ func (r *Req) Do(method, rawurl string, vs ...interface{}) (resp *Resp, err erro
 			uploads = append(uploads, vv...)
 		case *http.Cookie:
 			req.AddCookie(vv)
+		case []*http.Cookie:
+			for _,cc:=range vv{
+				req.AddCookie(cc)
+			}
 		case Host:
 			req.Host = string(vv)
 		case io.Reader:
